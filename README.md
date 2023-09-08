@@ -1,5 +1,9 @@
 # Rplant Fetcher Data
 
+## Rplant URL
+
+https://pool.rplant.xyz/
+
 ## Overview
 
 This application allows you to retrieve and monitor your earnings data from the Rplant cryptocurrency mining pool. You can customize your coin name and wallet address, and the application will display your total earnings over time.
