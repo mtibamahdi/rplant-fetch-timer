@@ -1,23 +1,30 @@
 import logo from './logo.svg';
 import './App.css';
+import FetchTimerApp from './FetchTimerApp';
+import UserCoinAndWallet from './UserCoinAndWallet';
+import { useLoacalStorage } from './useLocalStorageState';
 
 function App() {
+  const [coinName, setCoinName] = useLoacalStorage('', 'coinName');
+  const [wallet, setWallet] = useLoacalStorage('', 'wallet');
+
+  function hundleCoinAndWallet(coin, wallet) {
+    setCoinName(coin);
+    setWallet(wallet);
+  }
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      {!coinName ? (
+        <UserCoinAndWallet onAddCoinAndWallet={hundleCoinAndWallet} />
+      ) : (
+        <FetchTimerApp
+          coinName={coinName}
+          wallet={wallet}
+          setWallet={setWallet}
+          setCoinName={setCoinName}
+        />
+      )}
     </div>
   );
 }

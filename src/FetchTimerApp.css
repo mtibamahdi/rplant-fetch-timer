@@ -1,0 +1,123 @@
+/* FetchTimerApp.css */
+
+.fetch-timer-app {
+  font-family: Arial, sans-serif;
+  text-align: center;
+  margin: 20px auto;
+  padding: 20px;
+  max-width: 800px;
+  background-color: #1a1a1a;
+  color: #fff;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+}
+
+.app-title {
+  font-size: 24px;
+  margin: 20px;
+  color: #fff;
+}
+
+.timer-text {
+  font-size: 18px;
+  margin-top: 10px;
+  margin-bottom: 20px;
+  color: #ccc;
+}
+
+.edit-timer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: row; /* Align items in a line horizontally */
+  margin-bottom: 20px;
+}
+
+.timer-input {
+  width: 60px;
+  font-size: 16px;
+  padding: 4px;
+  text-align: center;
+  background-color: #333;
+  color: #fff;
+  border: none;
+}
+
+.timer-unit {
+  font-size: 16px;
+  margin-left: 15px;
+  margin-right: 10px;
+  color: #ccc;
+
+}
+.apply-button,
+.cancel-button,
+.set-timer-button,
+.reset-button {
+  font-size: 16px;
+  padding: 4px 10px;
+  cursor: pointer;
+  border: none;
+  background-color: #3498db;
+  color: #fff;
+  border-radius: 4px;
+  margin-left: 4px;
+}
+
+
+.apply-button:hover,
+.cancel-button:hover,
+.set-timer-button:hover,
+.reset-button:hover {
+  background-color: #2187c6;
+}
+
+.data-table {
+  margin-top: 20px;
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.coin-info {
+  font-size: 18px;
+  font-weight: bold;
+  background-color: #3498db;
+  color: #fff;
+}
+
+.wallet-info {
+  font-size: 18px;
+  font-weight: bold;
+  background-color: #e74c3c;
+  color: #fff;
+}
+
+.table-header {
+  font-weight: bold;
+  background-color: #333;
+  color: #fff;
+}
+
+.data-cell {
+  padding: 8px;
+  border-bottom: 1px solid #555;
+  text-align: center;
+}
+
+.loader-small {
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  border-radius: 50%;
+  border-top: 2px solid #3498db;
+  width: 16px;
+  height: 16px;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}

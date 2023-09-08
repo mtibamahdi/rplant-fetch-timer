@@ -1,0 +1,24 @@
+/* Loader.css */
+
+.loader-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.loader {
+  border: 2px solid rgba(255, 255, 255, 0.3); /* Reduce the border width */
+  border-radius: 50%;
+  border-top: 2px solid #3498db; /* Reduce the border width */
+  width: 10px; /* Reduce the width */
+  height: 10px; /* Reduce the height */
+  animation: spin 1s linear infinite;
+  align-items: center;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+/* Rest of your CSS styles... */

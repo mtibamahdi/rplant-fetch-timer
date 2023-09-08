@@ -1,0 +1,65 @@
+/* UserCoinAndWallet.css */
+
+
+.user-coin-wallet-container {
+  max-width: 400px;
+  margin: 10px auto;
+  padding: 20px;
+  background-color: #1a1a1a;
+  border-radius: 8px;
+  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+  justify-content: center;
+}
+
+.user-coin-wallet-title {
+  font-size: 24px;
+  font-weight: bold;
+  margin: 0;
+  margin-bottom: 20px;
+  text-align: center; /* Center-align the text */
+  flex: 1; /* Expand to fill available vertical space */
+  display: flex;
+  align-items: center; /* Vertically center the text */
+  justify-content: center; 
+  color: white;
+}
+
+
+.user-coin-wallet-button {
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  padding: 10px 20px;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.user-coin-wallet-input {
+  box-sizing: border-box;
+  width: 100%;
+  padding: 20px;
+  font-size: 16px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  margin-bottom: 10px;
+}
+
+.user-coin-wallet-button-container {
+  display: flex;
+  justify-content: space-between;
+}
+
+.user-coin-wallet-button.cancel-button {
+  background-color: #ccc;
+  color: #333;
+}
+
+.user-coin-wallet-button-container .user-coin-wallet-button {
+  flex: 1;
+  margin-right: 10px;
+}
+
+.user-coin-wallet-button-container .user-coin-wallet-button:last-child {
+  margin-right: 0;
+}
