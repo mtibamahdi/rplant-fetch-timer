@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect, useRef, useCallback } from 'react';
 import { useLoacalStorage } from './useLocalStorageState';
 import Loader from './Loader';
 import './FetchTimerApp.css'; // Import the CSS file
@@ -18,7 +18,7 @@ function FetchTimerApp({ coinName, setCoinName, wallet, setWallet }) {
   const previousTotal = useRef(0);
 
   // Fetch function
-  async function fetchData() {
+  const fetchData = useCallback(async () => {
     try {
       setIsLoading(true);
       const response = await fetch(
@@ -52,7 +52,7 @@ function FetchTimerApp({ coinName, setCoinName, wallet, setWallet }) {
     } finally {
       setIsLoading(false);
     }
-  }
+  }, [coinName, wallet, previousTotal, setData, setIsLoading]);
 
   useEffect(() => {
     document.title = 'Coin | ' + capitalizeFirstLetter(coinName);
@@ -63,13 +63,12 @@ function FetchTimerApp({ coinName, setCoinName, wallet, setWallet }) {
     };
   }, [coinName]);
 
-  // Fetch data when the component mounts
   useEffect(() => {
     if (!firstFetch) {
       fetchData();
       setFirstFetch(true);
     }
-  }, [firstFetch]); // The empty dependency array ensures it runs only once when mounted
+  }, [firstFetch, fetchData, setFirstFetch]);
 
   // Effect to update the timer every second
   useEffect(() => {
@@ -82,9 +81,8 @@ function FetchTimerApp({ coinName, setCoinName, wallet, setWallet }) {
     return () => {
       clearInterval(timerInterval);
     };
-  }, [timer]);
+  }, [timer, setTimer]);
 
-  // Effect to fetch data when the timer reaches 0
   useEffect(() => {
     if (timer === 0) {
       fetchData();
@@ -94,7 +92,7 @@ function FetchTimerApp({ coinName, setCoinName, wallet, setWallet }) {
     if (timer === -1) {
       // Timer was reset, do nothing or perform any cleanup
     }
-  }, [timer]);
+  }, [timer, fetchData, newTimerMinutes, setTimer]);
 
   // Function to handle timer input change
   function handleTimerInputChange(event) {

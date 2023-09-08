@@ -6,7 +6,9 @@ https://pool.rplant.xyz/
 
 ## Overview
 
-This application allows you to retrieve and monitor your earnings data from the Rplant cryptocurrency mining pool. You can customize your coin name and wallet address, and the application will display your total earnings over time.
+With this application, you can enter your coin name and wallet in the login page, then the application will calculate the total earned after a certain amount of time that you can modify.
+
+**Note: Please avoid opening this application in multiple tabs of the same browser simultaneously, as it uses local storage to store data. Opening multiple tabs may lead to conflicts and unexpected behavior.**
 
 ## Features
 
