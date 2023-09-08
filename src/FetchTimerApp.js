@@ -54,6 +54,15 @@ function FetchTimerApp({ coinName, setCoinName, wallet, setWallet }) {
     }
   }
 
+  useEffect(() => {
+    document.title = 'Coin | ' + capitalizeFirstLetter(coinName);
+
+    // Return a cleanup function to reset the title when the component unmounts
+    return () => {
+      document.title = 'rplantFetcher';
+    };
+  }, [coinName]);
+
   // Fetch data when the component mounts
   useEffect(() => {
     if (!firstFetch) {
