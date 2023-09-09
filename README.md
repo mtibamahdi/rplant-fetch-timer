@@ -1,6 +1,6 @@
 # Rplant Fetcher Data 
-[![Live Demo](https://main--neon-gumdrop-fdbccf.netlify.app/)](https://main--neon-gumdrop-fdbccf.netlify.app/)
 
+<a href="https://main--neon-gumdrop-fdbccf.netlify.app/" target="_blank">Live Demo</a>
 
 ## Rplant URL
 
