@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef, useCallback } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import { useLoacalStorage } from './useLocalStorageState';
 import Loader from './Loader';
 import './FetchTimerApp.css'; // Import the CSS file
@@ -14,8 +14,10 @@ function FetchTimerApp({ coinName, setCoinName, wallet, setWallet }) {
   const [data, setData] = useLoacalStorage([], 'data');
   const [isLoading, setIsLoading] = useState(false);
   const [firstFetch, setFirstFetch] = useLoacalStorage(false, 'firstFetch');
-
-  const previousTotal = useRef(0);
+  const [previousTotal, setPreviousTotal] = useLoacalStorage(
+    0,
+    'previousTotal'
+  );
 
   // Fetch function
   const fetchData = useCallback(async () => {
@@ -32,8 +34,8 @@ function FetchTimerApp({ coinName, setCoinName, wallet, setWallet }) {
       const total = parseInt(parsedTotal);
 
       let difference = 0;
-      if (previousTotal.current) {
-        difference = total - previousTotal.current;
+      if (previousTotal) {
+        difference = total - previousTotal;
       }
 
       const newData = {
@@ -42,9 +44,8 @@ function FetchTimerApp({ coinName, setCoinName, wallet, setWallet }) {
         timeNow,
         difference,
       };
-      console.log(newData);
 
-      previousTotal.current = total;
+      setPreviousTotal(total);
 
       setData((data) => [...data, newData]);
     } catch (error) {
@@ -52,7 +53,14 @@ function FetchTimerApp({ coinName, setCoinName, wallet, setWallet }) {
     } finally {
       setIsLoading(false);
     }
-  }, [coinName, wallet, previousTotal, setData, setIsLoading]);
+  }, [
+    coinName,
+    wallet,
+    previousTotal,
+    setPreviousTotal,
+    setData,
+    setIsLoading,
+  ]);
 
   useEffect(() => {
     document.title = 'Coin | ' + capitalizeFirstLetter(coinName);
@@ -123,10 +131,10 @@ function FetchTimerApp({ coinName, setCoinName, wallet, setWallet }) {
     return x;
   }
   function resetData() {
+    setPreviousTotal(0);
     setData([]);
     setFirstFetch(false);
-    setTimer(10 * 60);
-    setNewTimerMinutes(10);
+    setTimer(newTimerMinutes * 60);
   }
 
   function resetAllInfo() {
@@ -137,6 +145,7 @@ function FetchTimerApp({ coinName, setCoinName, wallet, setWallet }) {
     localStorage.removeItem('newTimerMinutes');
     localStorage.removeItem('data');
     localStorage.removeItem('firstFetch');
+    localStorage.removeItem('previousTotal');
   }
 
   function capitalizeFirstLetter(string) {
@@ -145,6 +154,9 @@ function FetchTimerApp({ coinName, setCoinName, wallet, setWallet }) {
 
   return (
     <div className="fetch-timer-app">
+      <div className="app-version">
+        <p>Ver 1.0</p>
+      </div>
       <button onClick={resetAllInfo} className="reset-button">
         Reset Wallet / Coin
       </button>

@@ -10,6 +10,15 @@
   color: #fff;
   border-radius: 8px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+  position: relative;
+}
+.app-version {
+  position: absolute;
+  float: left; 
+  color: #563f3a;
+  margin-top: -20px; 
+  margin-left: 10px;
+  font-size: 10px;
 }
 
 .app-title {
@@ -120,4 +129,15 @@
   100% {
     transform: rotate(360deg);
   }
+}
+
+.app {
+  /* Container styles */
+  position: relative; /* Ensure proper containment for floated elements */
+  /* Add any other styling you need for your app container */
+}
+
+.app-version {
+  float: left; 
+  left: 0px;
 }
